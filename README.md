@@ -21,6 +21,30 @@ Outros atalhos do pipeline:
 
 Lista completa: [`.cursor/skills/CATALOG.md`](.cursor/skills/CATALOG.md)
 
+## Como `/solve-issue` resolve issue e repo
+
+### Qual issue?
+
+O argumento é o número da issue no GitHub:
+
+- `/solve-issue 123` ou `/solve-issue #123` → issue **#123**
+- `/solve-issue https://github.com/org/repo/issues/123` → issue **#123** do repo da URL
+
+A skill usa `gh issue view <id>` (ver `/readissue`).
+
+### Qual repositório?
+
+Com só o número (`123`), o `gh` usa o **repo do workspace aberto no Cursor** — o remote `origin` da pasta atual.
+
+| Comando | Repo usado |
+|---------|------------|
+| `/solve-issue 123` | Projeto aberto no Cursor (`origin`) |
+| `/solve-issue https://github.com/Acme/api/issues/123` | `Acme/api` (via `--repo`) |
+
+Abra o repositório certo antes de usar só o ID. Sem git/`gh` autenticado nesse workspace, o fluxo para e reporta o erro.
+
+O mesmo critério vale para `/readissue` e `/validate-issue`.
+
 ## Layout
 
 ```
